@@ -10,7 +10,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<AppDbContext>(option => option.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
+builder.Services.AddDbContext<AppDbContext>(option =>
+{
+    option.UseSqlServer("Server=LENOVO-PC\\SQLEXPRESS;Database=EmployeeDB;Trusted_Connection=True;TrustServerCertificate=True;");
+
+});
+builder.Services.AddScoped<EmployeeRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
