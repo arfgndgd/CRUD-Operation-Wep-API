@@ -42,5 +42,16 @@ namespace crud_dotnet_api.Data
             employee.Age = model.Age;
             await _appDbContext.SaveChangesAsync();
         }
+
+        public async Task DeleteEmployee(int id)
+        {
+            var employee = await _appDbContext.Employees.FindAsync(id);
+            if (employee == null)
+            {
+                throw new Exception("Employee not found");
+            }
+            _appDbContext.Employees.Remove(employee);
+            await _appDbContext.SaveChangesAsync();
+        }
     }
 }

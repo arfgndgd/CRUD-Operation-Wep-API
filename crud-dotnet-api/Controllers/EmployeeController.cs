@@ -42,5 +42,12 @@ namespace crud_dotnet_api.Controllers
             await _employeeRepository.UpdateEmployee(id, model);
             return Ok();
         }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteEmployee([FromRoute] int id)
+        {
+            await _employeeRepository.DeleteEmployee(id);
+            return Ok();
+        }
     }
 }
